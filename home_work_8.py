@@ -14,7 +14,7 @@ import datetime
 import re
 
 
-class TestAddItem():
+class Test():
     def setup_method(self):
         self.driver = webdriver.Chrome()
         self.vars = {}
