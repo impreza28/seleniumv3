@@ -32,7 +32,12 @@ class TestAddItem():
         self.driver.find_element(By.XPATH, "//span[contains(.,'Catalog')]").click()
         self.driver.find_element(By.LINK_TEXT, "Add New Product").click()
         self.driver.find_element(By.NAME, "status").click()
-        self.driver.find_element(By.NAME, "name[en]").send_keys("Жареная утка")
+
+        date_time = clear(str(datetime.datetime.now().time()))
+
+        name_item = f"Жареная утка{date_time}"
+
+        self.driver.find_element(By.NAME, "name[en]").send_keys(name_item)
         self.driver.find_element(By.NAME, "code").click()
         self.driver.find_element(By.NAME, "code").send_keys("123456")
         self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) tr:nth-child(2) input").click()
@@ -58,7 +63,15 @@ class TestAddItem():
         self.driver.find_element(By.LINK_TEXT, "Prices").click()
         self.driver.find_element(By.NAME, "purchase_price").send_keys("1000")
         self.driver.find_element(By.NAME, "save").click()
+        self.driver.find_element(By.NAME, "query").send_keys(f"{name_item}")
+        self.driver.find_element(By.NAME, "query").send_keys(Keys.ENTER)
+        item = self.driver.find_element(By.XPATH, "//table[@class='dataTable']//tr[@class='row']/td[3]").get_attribute("textContent")
 
+
+        assert item == f" {name_item}", "Имя товара не совпадает"
+
+
+        #self.driver.find_elements()
 
     def login(self, email, password):
         self.driver.find_element(By.NAME, "email").send_keys(email)
