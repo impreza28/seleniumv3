@@ -23,8 +23,7 @@ class Test:
         self.driver.quit()
 
     def test_geozones_check(self):
-        self.driver.get(
-            "http://localhost/litecart/public_html/admin/")
+        self.driver.get("http://localhost/litecart/public_html/admin/")
         login = 'admin'
         password = 'admin'
         self.driver.set_window_size(1236, 950)
