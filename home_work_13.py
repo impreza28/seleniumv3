@@ -16,6 +16,7 @@ class Test():
         self.driver = webdriver.Chrome()
         self.vars = {}
 
+
     def teardown_method(self):
         self.driver.quit()
 
