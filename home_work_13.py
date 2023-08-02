@@ -11,15 +11,15 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
-class Test45():
-    def setup_method(self, method):
+class Test():
+    def setup_method(self):
         self.driver = webdriver.Chrome()
         self.vars = {}
 
-    def teardown_method(self, method):
+    def teardown_method(self):
         self.driver.quit()
 
-    def test_45(self):
+    def test_add_to_cart(self):
         global name_item
         self.driver.get("http://localhost/litecart/public_html/en/")
         self.driver.set_window_size(1275, 729)
