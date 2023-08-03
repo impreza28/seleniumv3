@@ -23,8 +23,7 @@ class Test:
         self.driver.quit()
 
     def test_open_new_window(self):
-        self.driver.get(
-            "http://localhost/litecart/public_html/admin/login.php?redirect_url=%2Flitecart%2Fpublic_html%2Fadmin%2F")
+        self.driver.get("http://localhost/litecart/public_html/admin/login.php?redirect_url=%2Flitecart%2Fpublic_html%2Fadmin%2F")
 
         # авторизоваться
         self.driver.set_window_size(1276, 729)
