@@ -13,7 +13,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class Test():
     def setup_method(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Firefox()
         self.vars = {}
 
 
@@ -71,6 +71,8 @@ class Test():
             self.driver.find_element(By.NAME, "remove_cart_item").click()
             WebDriverWait(self.driver, 5).until(
                 expected_conditions.invisibility_of_element_located((By.XPATH, f"//strong[contains(.,'{name_item}')]")))
+            WebDriverWait(self.driver, 5).until(
+                expected_conditions.presence_of_element_located((By.XPATH, f"//div[@id='checkout-cart-wrapper' and @style='opacity: 1;']")))
 
 
             #if len(self.driver.find_elements(By.LINK_TEXT, "<< Back")) < 0:
